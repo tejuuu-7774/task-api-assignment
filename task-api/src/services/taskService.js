@@ -81,6 +81,7 @@ const _reset = () => {
 };
 
 const assignTask = (id, assignee) => {
+  // Handled cases for invalid task ID
   const task = findById(id);
   if (!task) return null;
 
