@@ -80,6 +80,23 @@ const _reset = () => {
   tasks = [];
 };
 
+const assignTask = (id, assignee) => {
+  const task = findById(id);
+  if (!task) return null;
+
+  if (!assignee || assignee.trim() === "") return "INVALID";
+
+  const updated = {
+    ...task,
+    assignee,
+  };
+
+  const index = tasks.findIndex((t) => t.id === id);
+  tasks[index] = updated;
+
+  return updated;
+};
+
 module.exports = {
   getAll,
   findById,
@@ -91,4 +108,5 @@ module.exports = {
   remove,
   completeTask,
   _reset,
+  assignTask
 };
